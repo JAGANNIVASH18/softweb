@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <h1>🍴 My Restaurant</h1>
+    <ul>
+      <li><a href="home.html">Home</a></li>
+      <li><a href="dishes.html">Dishes</a></li>
+      <li><a href="order.html" class="active">Order</a></li>
+      <li><a href="index.html">Logout</a></li>
+    </ul>
+  </nav>
+
+  <section class="order">
+    <h2>Place Your Order</h2>
+    <form onsubmit="return placeOrder()">
+      <label>Select Dish:</label>
+      <select id="dish" required>
+        <option value="">-- Select --</option>
+        <option>Burger</option>
+        <option>Pizza</option>
+        <option>Salad</option>
+        <option>Pasta</option>
+      </select>
+
+      <label>Quantity:</label>
+      <input type="number" id="qty" min="1" required>
+
+      <button type="submit">Order Now</button>
+    </form>
+
+    <p id="msg"></p>
+  </section>
+
+  <script>
+    function placeOrder() {
+      const dish = document.getElementById('dish').value;
+      const qty = document.getElementById('qty').value;
+      if (dish && qty > 0) {
+        document.getElementById('msg').innerText = `✅ Order placed for ${qty} ${dish}(s)!`;
+      } else {
+        document.getElementById('msg').innerText = `⚠️ Please fill all fields.`;
+      }
+      return false;
+    }
+  </script>
+</body>
+</html>
